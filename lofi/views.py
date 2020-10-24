@@ -56,7 +56,6 @@ def request_lofi(request):
                     'form': form
                 })
 
-            video = ""
             if videoId is not None:
                 video = base_url + videoId
                 print(video)
