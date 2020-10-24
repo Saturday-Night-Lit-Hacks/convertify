@@ -4,6 +4,8 @@ from .forms import RequestMusicForm
 from .models import UserInput
 import pydub
 from .youtube import *
+from .extract import *
+from django.contrib import messages
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 base_url = "https://www.youtube.com/watch?v="
@@ -37,16 +39,23 @@ def request_lofi(request):
             if not article_url:
                 has_url = True
             
-            if freq_num < 1 and freq_num > 9:
+            if not freq_num or (freq_num < 1 and freq_num > 9):
                 freq_num = 3
 
-            # TODO: call a function in our transformation file
+            # UserInput.objects.create(article_url=article_url, has_url=has_url, text="Done", freq_num=freq_num,
+            # rand_video=rand_video)
+            videoId = ""
 
-            UserInput.objects.create(article_url=article_url, has_url=has_url, text="Done", freq_num=freq_num,
-                                     rand_video=rand_video)
+            if article_url:
+                videoId = article_request(article_url, freq_num, rand_video)
+            elif text:
+                videoId = text_request(text, freq_num, rand_video)
+            else:
+                messages.error(request, 'Please enter an article url or some text.')
+                return render(request, "lofi/request_lofi.html", {
+                    'form': form
+                })
 
-            # TODO: return to somewhere else
-            videoId = youtube(text, freq_num)
             video = ""
             if videoId is not None:
                 video = base_url + youtube(text, freq_num)

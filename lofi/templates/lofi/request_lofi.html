@@ -4,7 +4,16 @@
     {% load crispy_forms_tags %}
     <div class="container">
         <h3 class="page-title">Request Lofi Conversion</h3>
+
         <form action="{% url 'request_lofi' %}" method="post">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger col-12" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             {% csrf_token %}
             <div class="form-group">
                 {{ form.article_url|as_crispy_field }}
