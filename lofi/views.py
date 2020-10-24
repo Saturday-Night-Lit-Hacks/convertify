@@ -45,7 +45,7 @@ def request_lofi(request):
 
             # TODO: call a function in our transformation file
 
-            UserInput.objects.create(article_url=article_url, has_url=has_url, text=text, freq_num=freq_num,
+            UserInput.objects.create(article_url=article_url, has_url=has_url, text="Done", freq_num=freq_num,
                                      rand_video=rand_video)
 
             # TODO: return to somewhere else
