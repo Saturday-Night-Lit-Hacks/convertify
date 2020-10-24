@@ -11,34 +11,39 @@ import googleapiclient.discovery
 import googleapiclient.errors
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
+base_url = "https://www.youtube.com/watch?v="
 
 # Create your views here.
 def index(request):
     context = {'name': 'Tanya Lai'}
-    youtube(2,2)
     if request.method == 'POST':
         data = request.POST
         context['name'] = data.get('firstname')
     return render(request, 'lofi/index.html', context)
 
-def youtube(queries, resultSize):
+def youtube(queries, resultNum):
     # every request must specify settings.KEY
     api_service_name = "youtube"
     api_version = "v3"
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey=settings.KEY)
+    
+    # if person has typos, then use the suggested search requests for
 
     request = youtube.search().list(
         part="snippet",
-        maxResults=2,
-        q="retrteiurtyewytueryr5o23"
+        maxResults=10,
+        q=queries,
     )
     response = request.execute()
     if response['pageInfo']['totalResults'] == 0:
+        print(response)
         print('no results')
-    
-    print(response)
-    return 1
+        return None
+    else:
+        if resultNum > len(response["items"]):
+            resultNum = len(response["items"])
+        return response["items"][resultNum - 1]["id"]["videoId"]
 
 def scrape(request):
     return 1
@@ -70,6 +75,13 @@ def request_lofi(request):
                                      rand_video=rand_video)
 
             # TODO: return to somewhere else
+            videoId = youtube(text, freq_num)
+            video = ""
+            if videoId is not None:
+                video = base_url + youtube(text, freq_num)
+                print(video)
+            else:
+                print("problem")
     else:
         form = RequestMusicForm()
     # TODO: add HTML file
