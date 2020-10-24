@@ -26,4 +26,6 @@ sqlparse==0.4.1
 uritemplate==3.0.1
 urllib3==1.25.11
 beautifulsoup4
-scikit-learn
+nltk
+re
+collections
