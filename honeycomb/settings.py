@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'lofi.apps.LofiConfig',
     'lofi',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
