@@ -3,5 +3,6 @@ from .import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('request', views.request_lofi, name='request_lofi')
+    path('request', views.request_lofi, name='request_lofi'),
+    path('playback', views.playback, name='playback'),
 ]
