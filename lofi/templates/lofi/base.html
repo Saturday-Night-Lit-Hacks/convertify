@@ -14,12 +14,41 @@
     <!-- Our CSS -->
     <link rel="stylesheet" href="{% static 'lofi/stylesheet.css' %}">
 
+    <!-- Our JS -->
+    <!-- <script src="{% static 'lofi/script.js' %}"></script>
+ -->
+
     <title>LoFi</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-md bg-light navbar-light">
+      <!-- Brand -->
+      <a class="navbar-brand" href="/">LoFeeFiFoFum</a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     {% block content %}
-        
     {% endblock %}
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
