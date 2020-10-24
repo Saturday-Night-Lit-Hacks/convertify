@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+import pydub
 
 # Create your views here.
 def index(request):
@@ -16,5 +17,7 @@ def input(request):
 
 def scrape(request):
     return 1
-from django.shortcuts import redirect
+
+def make_lofi(request):
+    return 1
 
