@@ -2,19 +2,19 @@
 
 {% block content %}
     {% load crispy_forms_tags %}
-    <div class="container" style="margin-top: 2em;">
+    <div class="container">
+        <h3 class="page-title">Request Lofi Conversion</h3>
         <form action="{% url 'request_lofi' %}" method="post">
             {% csrf_token %}
-            <div class="form-row">
+            <div class="form-group">
                 {{ form.article_url|as_crispy_field }}
-            </div>
-            <div class="form-row">
+            <div class="form-group">
                 {{ form.text|as_crispy_field }}
             </div>
-            <div class="form-row">
+            <div class="form-group">
                 {{ form.freq_num|as_crispy_field }}
             </div>
-            <div class="form-row" style="margin-top: 0.5em;">
+            <div class="form-group" style="margin-top: 0.5em;">
                 {{ form.rand_video|as_crispy_field }}
             </div>
             <input type="submit" class="btn btn-primary" value="Request">
