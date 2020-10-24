@@ -24,7 +24,6 @@ def scrape(request):
 def make_lofi(request):
     return 1
 
-
 def request_lofi(request):
     if request.method == 'POST':
         form = RequestMusicForm(request.POST)
