@@ -20,6 +20,11 @@ def article_request(link, freq):
     # print(soup.find_all('a'))
 
     text = soup.get_text()
+    text_request(text, freq)
+
+
+def text_request(text, freq):
+    tokens = re.findall('\w+', text)
     tokens = re.findall('\w+', text)
     # print(tokens[:10])
 
