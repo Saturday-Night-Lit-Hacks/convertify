@@ -8,7 +8,7 @@ def index(request):
         data = request.POST
         context['name'] = data.get('firstname')
         
-    return render(request, 'index.html', context)
+    return render(request, 'lofi/index.html', context)
 
 def input(request):
     return 1
