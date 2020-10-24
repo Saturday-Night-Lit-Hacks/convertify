@@ -27,6 +27,8 @@ def youtube(queries, resultNum, rand):
     if response['pageInfo']['totalResults'] == 0:
         print(response)
         print('no results')
+        # TODO: what should we do in response?
+        # TODO: grab the youtube suggestions, fix spelling errors and try again
         return None
     else:
         if resultNum > len(response["items"]):

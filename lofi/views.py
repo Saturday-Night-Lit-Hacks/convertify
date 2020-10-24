@@ -46,10 +46,10 @@ def request_lofi(request):
                                      rand_video=rand_video)
 
             # TODO: return to somewhere else
-            videoId = youtube(text, freq_num)
+            videoId = youtube(text, freq_num, False)
             video = ""
             if videoId is not None:
-                video = base_url + youtube(text, freq_num)
+                video = base_url + videoId
                 print(video)
             else:
                 print("problem")
