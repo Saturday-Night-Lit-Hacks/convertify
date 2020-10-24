@@ -63,9 +63,13 @@ def request_lofi(request):
                 print("problem")
 
             # TODO: return to somewhere else
+            return redirect('/playback')
     else:
         form = RequestMusicForm()
     # TODO: add HTML file
     return render(request, 'lofi/request_lofi.html', {
         'form': form
     })
+
+def playback(request):
+    return render(request, 'lofi/playback.html', {})
