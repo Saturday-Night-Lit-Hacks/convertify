@@ -1,4 +1,5 @@
 asgiref==3.3.0
+beautifulsoup4==4.9.3
 cachetools==4.1.1
 certifi==2020.6.20
 chardet==3.0.4
@@ -12,6 +13,8 @@ google-auth-oauthlib==0.4.1
 googleapis-common-protos==1.52.0
 httplib2==0.18.1
 idna==2.10
+joblib==0.17.0
+numpy==1.19.2
 oauthlib==3.1.0
 protobuf==3.13.0
 pyasn1==0.4.8
@@ -21,11 +24,11 @@ pytz==2020.1
 requests==2.24.0
 requests-oauthlib==1.3.0
 rsa==4.6
+scikit-learn==0.23.2
+scipy==1.5.3
 six==1.15.0
+soupsieve==2.0.1
 sqlparse==0.4.1
+threadpoolctl==2.1.0
 uritemplate==3.0.1
 urllib3==1.25.11
-beautifulsoup4
-nltk
-re
-collections
