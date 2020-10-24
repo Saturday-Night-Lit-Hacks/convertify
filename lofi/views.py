@@ -58,10 +58,12 @@ def request_lofi(request):
 
             video = ""
             if videoId is not None:
-                video = base_url + youtube(text, freq_num)
+                video = base_url + videoId
                 print(video)
             else:
                 print("problem")
+
+            # TODO: return to somewhere else
     else:
         form = RequestMusicForm()
     # TODO: add HTML file
