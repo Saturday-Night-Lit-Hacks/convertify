@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class UserInput(models.Model):
-    article_url = models.URLField(max_length=250, null=True, blank=True)
+    article_url = models.URLField(null=True, blank=True)
     has_url = models.BooleanField(default=False)
     text = models.TextField(blank=True, null=True)
 
