@@ -37,3 +37,5 @@ tqdm==4.50.2
 uritemplate==3.0.1
 urllib3==1.25.11
 beautifulsoup4
+ffmpeg
+simpleaudio
