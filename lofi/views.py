@@ -66,7 +66,6 @@ def request_lofi(request):
             # TODO: return to somewhere else
     else:
         form = RequestMusicForm()
-    # TODO: add HTML file
     return render(request, 'lofi/request_lofi.html', {
         'form': form
     })

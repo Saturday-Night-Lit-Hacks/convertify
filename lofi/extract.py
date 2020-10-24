@@ -21,7 +21,7 @@ def article_request(link, freq, rand):
     # print(soup.find_all('a'))
 
     text = soup.get_text()
-    text_request(text, freq, rand)
+    return text_request(text, freq, rand)
 
 
 def text_request(text, freq, rand):
