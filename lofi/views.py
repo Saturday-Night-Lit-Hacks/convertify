@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import RequestMusicForm
 from .models import UserInput
-import pydub
 from .youtube import *
 from .extract import *
 from django.contrib import messages

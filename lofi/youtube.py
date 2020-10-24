@@ -24,13 +24,11 @@ def youtube(queries, resultNum, rand):
         resultNum = random.randint(1, 9)
 
     response = request.execute()
-    if response['pageInfo']['totalResults'] == 0:
-        print(response)
+    videos = [result["id"]["videoId"] for result in response["items"] if result["id"].get("videoId") is not None]
+    if len(videos) == 0:
         print('no results')
-        # TODO: what should we do in response?
-        # TODO: grab the youtube suggestions, fix spelling errors and try again
         return None
     else:
-        if resultNum > len(response["items"]):
-            resultNum = len(response["items"])
-        return response["items"][resultNum - 1]["id"]["videoId"]
+        if resultNum > len(videos):
+            resultNum = len(videos)
+        return videos[resultNum - 1]
