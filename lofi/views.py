@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import RequestMusicForm
-from .models import UserInput
+from .models import UserInput, YoutubeLink
 import pydub
 from .youtube import *
 from .extract import *
@@ -62,14 +62,18 @@ def request_lofi(request):
                 print(video)
             else:
                 print("problem")
+                messages.error(request, 'Sorry! Please try again.')
+                return render(request, "lofi/request_lofi.html", {
+                    'form': form
+                })
 
-            # TODO: return to somewhere else
-            return redirect('/playback')
+            ytVid = YoutubeLink.objects.create(url=video)
+            return redirect('playback', ytVid.id)
     else:
         form = RequestMusicForm()
     return render(request, 'lofi/request_lofi.html', {
         'form': form
     })
 
-def playback(request):
+def playback(request, video_id):
     return render(request, 'lofi/playback.html', {})

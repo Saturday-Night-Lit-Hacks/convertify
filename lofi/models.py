@@ -9,3 +9,7 @@ class UserInput(models.Model):
     # top freq_num of words
     freq_num = models.IntegerField(default=3)
     rand_video = models.BooleanField(default=False)
+
+
+class YoutubeLink(models.Model):
+    url = models.URLField(null=False, blank=False)
