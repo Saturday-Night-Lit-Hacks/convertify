@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import nltk
 from collections import Counter
+from .youtube import youtube
 
 '''
 With help from KISHAN MALADKAR's Using Natural Language Processing To Check Word Frequency In 
@@ -11,7 +12,7 @@ With help from KISHAN MALADKAR's Using Natural Language Processing To Check Word
 
 # nltk.download('stopwords')
 
-def article_request(link, freq):
+def article_request(link, freq, rand):
     request = requests.get(link)
     html = request.text
 
@@ -20,11 +21,10 @@ def article_request(link, freq):
     # print(soup.find_all('a'))
 
     text = soup.get_text()
-    text_request(text, freq)
+    text_request(text, freq, rand)
 
 
-def text_request(text, freq):
-    tokens = re.findall('\w+', text)
+def text_request(text, freq, rand):
     tokens = re.findall('\w+', text)
     # print(tokens[:10])
 
@@ -47,5 +47,5 @@ def text_request(text, freq):
     top_words = []
     for key, item in word_dict:
         top_words.append(key)
-
-    print(top_words)
+    search_query = " ".join(top_words)
+    youtube(search_query, freq, rand)

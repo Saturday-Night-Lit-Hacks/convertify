@@ -1,14 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.conf import settings
 from .forms import RequestMusicForm
 from .models import UserInput
 import pydub
-import requests
-import os
-import google_auth_oauthlib.flow
-import googleapiclient.discovery
-import googleapiclient.errors
+from .youtube import *
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 base_url = "https://www.youtube.com/watch?v="
@@ -20,30 +15,6 @@ def index(request):
         data = request.POST
         context['name'] = data.get('firstname')
     return render(request, 'lofi/index.html', context)
-
-def youtube(queries, resultNum):
-    # every request must specify settings.KEY
-    api_service_name = "youtube"
-    api_version = "v3"
-    youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, developerKey=settings.KEY)
-    
-    # if person has typos, then use the suggested search requests for
-
-    request = youtube.search().list(
-        part="snippet",
-        maxResults=10,
-        q=queries,
-    )
-    response = request.execute()
-    if response['pageInfo']['totalResults'] == 0:
-        print(response)
-        print('no results')
-        return None
-    else:
-        if resultNum > len(response["items"]):
-            resultNum = len(response["items"])
-        return response["items"][resultNum - 1]["id"]["videoId"]
 
 def scrape(request):
     return 1
@@ -65,7 +36,7 @@ def request_lofi(request):
             # checks to see if any blanks
             if not article_url:
                 has_url = True
-
+            
             if freq_num < 1 and freq_num > 9:
                 freq_num = 3
 
