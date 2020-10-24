@@ -1,2 +1,7 @@
-Django~=3.0.7
+asgiref==3.3.0
+Django==3.0.10
 django-crispy-forms==1.9.0
+requests
+pydub==0.24.1
+pytz==2020.1
+sqlparse==0.4.1
