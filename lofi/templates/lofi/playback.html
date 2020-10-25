@@ -56,6 +56,6 @@
         <audio data-key="76" src="{% static 'lofi/sounds/clap.wav' %}"></audio>
     <script>
         let wave = new CircularAudioWave(document.getElementById('chart-container'));
-        wave.loadAudio('../static/lofi/{{filename}}');
+        wave.loadAudio('/static/lofi/{{ filename }}');
     </script>
 {% endblock %}
