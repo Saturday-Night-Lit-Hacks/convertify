@@ -1,8 +1,6 @@
 {% extends 'lofi/base.html' %}
 {% load static %}
 
-{% load static %}
-
 {% block content %}
     {% load crispy_forms_tags %}
     <div class="playback container text-center">      
@@ -17,8 +15,47 @@
     <button onclick="wave.play()">Play</button>
     <div id="chart-container" style="width: 100%; height: 100%;"></div>
     <script src="{% static 'lofi/circular-audio-wave.min.js' %}"></script>
+    <div class="piano">
+            <div data-key="65" class="key btn btn-secondary">
+                <kbd>A</kbd>
+              </div>
+              <div data-key="83" class="key btn btn-secondary">
+                <kbd>S</kbd>
+              </div>
+              <div data-key="68" class="key btn btn-secondary">
+                <kbd>D</kbd>
+              </div>
+              <div data-key="70" class="key btn btn-secondary">
+                <kbd>F</kbd>
+              </div>
+              <div data-key="71" class="key btn btn-secondary">
+                <kbd>G</kbd>
+              </div>
+              <div data-key="72" class="key btn btn-secondary">
+                <kbd>H</kbd>
+              </div>
+              <div data-key="74" class="key btn btn-secondary">
+                <kbd>J</kbd>
+              </div>
+              <div data-key="75" class="key btn btn-secondary">
+                <kbd>K</kbd>
+              </div>
+              <div data-key="76" class="key btn btn-secondary">
+                <kbd>L</kbd>
+              </div>
+        </div>
+        <script src="{% static 'lofi/audio-buttons.js' %}"></script>
+        <audio data-key="65" src="{% static 'lofi/sounds/boom.wav' %}"></audio>
+        <audio data-key="83" src="{% static 'lofi/sounds/hihat.wav' %}"></audio>
+        <audio data-key="68" src="{% static 'lofi/sounds/kick.wav' %}"></audio>
+        <audio data-key="70" src="{% static 'lofi/sounds/openhat.wav' %}"></audio>
+        <audio data-key="71" src="{% static 'lofi/sounds/ride.wav' %}"></audio>
+        <audio data-key="72" src="{% static 'lofi/sounds/snare.wav' %}"></audio>
+        <audio data-key="74" src="{% static 'lofi/sounds/tink.wav' %}"></audio>
+        <audio data-key="75" src="{% static 'lofi/sounds/tom.wav' %}"></audio>
+        <audio data-key="76" src="{% static 'lofi/sounds/clap.wav' %}"></audio>
     <script>
         let wave = new CircularAudioWave(document.getElementById('chart-container'));
-        wave.loadAudio('../static/lofi/beat4.wav');
+        wave.loadAudio('../static/lofi/{{filename}}');
     </script>
 {% endblock %}
