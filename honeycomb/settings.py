@@ -27,7 +27,7 @@ SECRET_KEY = '*gu4!rj9k4s(+9in%7cth$hwt+ea26llj9k__jt5no2g=$b@*1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'lofi-converter.herokuapp.com']
 
 
 # Application definition
@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_FAIL_SILENTLY = not DEBUG
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'honeycomb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,9 +125,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
