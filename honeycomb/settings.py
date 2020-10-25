@@ -27,7 +27,7 @@ SECRET_KEY = '*gu4!rj9k4s(+9in%7cth$hwt+ea26llj9k__jt5no2g=$b@*1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'lofi-converter.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
