@@ -33,3 +33,6 @@ uritemplate==3.0.1
 urllib3==1.25.11
 youtube-dl==2020.9.20
 yt-audio==0.1
+beautifulsoup4
+ffmpeg
+simpleaudio
