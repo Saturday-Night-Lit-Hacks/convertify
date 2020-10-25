@@ -3,6 +3,12 @@ import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
 import random
+import requests
+import os
+import youtube_dl
+from pydub import AudioSegment
+import subprocess
+
 
 def youtube(queries, resultNum, rand):
     # every request must specify settings.KEY
@@ -32,3 +38,39 @@ def youtube(queries, resultNum, rand):
         if resultNum > len(videos):
             resultNum = len(videos)
         return videos[resultNum - 1]
+
+def youtubedl(url):
+    # os.system('youtube-dl -x --audio-format wav ' + url)
+    video_id = url[32:]
+    def download_hook(d):
+        if d['status'] == 'finished':
+            print('Done downloading, now converting')
+            # Create the new .wav filename
+            audio_file = d["filename"]
+            print(audio_file)
+            # start = 0
+            # end = 1.5 * 60 * 1000
+            # wav_filename = os.path.splitext(os.path.basename(audio_file))[0] + ".wav"
+            # AudioSegment.from_file(audio_file).export(out_f=wav_filename, 
+            #                           format='wav')
+            # # song = AudioSegment.from_file(audio_file, "m4a")[start:end]
+            # # extract = song[start:end]
+            # # extract.export(audio_file, format="m4a")
+
+    ydl_opts = {
+        'format': 'm4a/bestaudio',
+        'outtmpl': "%(id)s.%(ext)s",  
+        'postprocessors': [{
+          'key': 'FFmpegExtractAudio',
+          'preferredcodec': 'wav',
+        }],
+        'ffmpeg_location': 'ffmpeg-f/',
+        'progress_hooks': [download_hook],
+        'download': False,
+    }
+
+    ydl = youtube_dl.YoutubeDL(ydl_opts)
+
+
+    with ydl:
+       ydl.download([url])

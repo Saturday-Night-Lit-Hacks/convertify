@@ -47,7 +47,4 @@ def text_request(text, freq, rand):
     for key, item in word_dict:
         top_words.append(key)
     search_query = " ".join(top_words)
-    print("search query")
-    print(search_query)
-    print(top_words)
     return youtube(search_query, freq, rand)

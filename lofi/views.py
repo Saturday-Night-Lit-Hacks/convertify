@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .forms import RequestMusicForm
 from .models import UserInput, YoutubeLink
 import pydub
-from .youtube import *
+from .youtube import youtubedl
 from .extract import *
 from django.contrib import messages
 
@@ -17,9 +17,6 @@ def index(request):
         data = request.POST
         context['name'] = data.get('firstname')
     return render(request, 'lofi/index.html', context)
-
-def scrape(request):
-    return 1
 
 def make_lofi(request):
     return 1
@@ -57,9 +54,7 @@ def request_lofi(request):
 
             if videoId is not None:
                 video = base_url + videoId
-                print(video)
             else:
-                print("problem")
                 messages.error(request, 'Sorry! Please try again.')
                 return render(request, "lofi/request_lofi.html", {
                     'form': form
@@ -74,4 +69,9 @@ def request_lofi(request):
     })
 
 def playback(request, video_id):
-    return render(request, 'lofi/playback.html', {})
+    video_object = YoutubeLink.objects.get(pk=video_id)
+    url = video_object.url
+
+    youtubedl(url)
+        
+    return render(request, 'lofi/playback.html', {"url": url})
