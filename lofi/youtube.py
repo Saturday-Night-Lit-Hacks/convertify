@@ -81,5 +81,5 @@ def youtubedl(url):
 
         print('Converting to Lo-Fi')
         beat = AudioSegment.from_wav(video_id + '.wav')
-        filtered = beat.low_pass_filter(3000)
+        filtered = beat.low_pass_filter(8000)
         filtered.export(video_id + '.wav', format='wav')
