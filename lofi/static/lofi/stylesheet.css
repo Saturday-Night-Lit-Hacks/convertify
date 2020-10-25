@@ -1,0 +1,134 @@
+@-o-viewport {
+    width: device-width
+}
+
+@viewport {
+    width: device-width
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Trispace&display=swap');
+
+
+/*.midway {
+    position: absolute;
+    margin: auto;
+    height: 800px;
+    width: 100%;
+    display: inline-block;
+}
+
+*/
+html,body {
+	height: 100%;
+	width: 100%;
+}
+body {
+
+	/*background-color: #FFDEE9;
+	background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);*/
+
+	/*background-color: #A9C9FF;
+	background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);*/
+
+	background-color: #74EBD5;
+	background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+	background-repeat: no-repeat;
+	align-items: center;
+}
+
+
+h1, h2, h3, p {
+	font-family: 'Trispace', sans-serif;
+	color: white;
+
+}
+.page-title h1, h2, h3, p {
+	font-size: 45px;
+}
+.request_page .page-title {
+	margin-right: 10px;
+	max-width: 500px;
+}
+.index button {
+	padding: 20px;
+	font-size: 30px;
+	font-family: 'Trispace', sans-serif;
+	margin-top: 5px;
+	border: 1px solid white;
+	color: white;
+}
+
+.index button:hover {
+	color: white;
+	border: 1px solid #8584e3;
+	background-color: #8584e3;
+}
+
+.container {
+	/*border: 1px solid black;*/
+	width: 100%;
+	height: 90%;
+	/*display: flex;*/
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+/*	border: 3px solid blue;
+*/}
+
+.playback {
+	display: block;
+}
+
+/* ---- particles.js container ---- */ 
+#particles-js{ 
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
+	/*background: black;*/
+	/*border: 3px solid red;*/
+}
+
+.navbar {
+	padding-top: 10px;
+}
+.navbar a {
+	color: white;
+	font-size: 25px;
+	font-family: 'Trispace', sans-serif;
+}
+.navbar a:hover {
+	opacity: 0.5;
+}
+
+.sound {
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	letter-spacing: .1rem;
+	color: #ffc600;
+}
+
+.playing {
+	transform: scale(1.1);
+  }
+
+.key {
+	display: inline-block;
+}
+
+.piano {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+.moosic{
+	display: inline-block;
+}
+
+.playback audio {
+	margin-top: 10px;
+	width: 500px;
+}

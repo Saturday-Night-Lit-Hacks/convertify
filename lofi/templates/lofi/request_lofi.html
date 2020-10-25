@@ -1,0 +1,32 @@
+{% extends 'lofi/base.html' %}
+
+{% block content %}
+    {% load crispy_forms_tags %}
+    <div class="request_page container">
+        <h3 class="page-title">Request Lofi Conversion</h3>
+
+        <form action="{% url 'request_lofi' %}" method="post">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger col-12" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.article_url|as_crispy_field }}
+            <div class="form-group">
+                {{ form.text|as_crispy_field }}
+            </div>
+            <div class="form-group">
+                {{ form.freq_num|as_crispy_field }}
+            </div>
+            <div class="form-group" style="margin-top: 0.5em;">
+                {{ form.rand_video|as_crispy_field }}
+            </div>
+            <input type="submit" class="btn btn-primary" value="Request">
+        </form>
+    </div>
+{% endblock %}
