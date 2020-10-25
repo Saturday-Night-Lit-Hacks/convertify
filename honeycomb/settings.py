@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 import django_heroku
-
+import dj_database_url
 
 import os
 
@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*gu4!rj9k4s(+9in%7cth$hwt+ea26llj9k__jt5no2g=$b@*1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'lofi-converter.herokuapp.com']
 
@@ -82,12 +82,17 @@ KEY = 'AIzaSyAB4WFHyXNOsgAVdjSGQQ8TVhmddjAXHW8'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+DATABASES = {}
+
+if DEBUG:
+    DATABASES['default'] = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
