@@ -93,9 +93,9 @@ def youtubedl(url):
         reverser = bop.overlay(beat, gain_during_overlay=20)
         # mono
         print("overlayed")
-        reverser = reverser.high_pass_filter(6500)
-        print("high passed")
-        reverser = reverser.low_pass_filter(200)
+        # reverser = reverser.high_pass_filter(6500)
+        # print("high passed")
+        reverser = reverser.low_pass_filter(1000)
         print("low passed")
         reverser = reverser.fade_in(3000).fade_out(3000)
         print("faded")
@@ -124,5 +124,5 @@ def youtubedl(url):
 
         # cut up into different segments and loop
         # used to just be reverser
-        reverser.export(video_id + '.wav', format='wav')
+        reverser.export("lofi/static/lofi/downloads/" + video_id + '.wav', format='wav')
         print('complete')

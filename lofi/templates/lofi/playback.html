@@ -2,6 +2,23 @@
 {% load static %}
 
 {% block content %}
+    <style>
+        .btn-new {
+          padding: 10px;
+          font-size: 20px;
+          font-family: 'Trispace', sans-serif;
+          margin-top: 5px;
+          border: 1px solid white;
+          color: white;
+        }
+
+        .btn-new:hover, .btn-new:focus {
+          color: white;
+          border: 1px solid #8584e3;
+          background-color: #8584e3;
+        }
+    </style>
+
     {% load crispy_forms_tags %}
     <div class="playback container text-center">      
         <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -10,41 +27,43 @@
 		  <source src="/static/lofi/{{ filename }}" type="audio/wav">
 		Your browser does not support the audio element.
 		</audio>
-    </div>
 
-    <button onclick="wave.play()">Play</button>
-    <div id="chart-container" style="width: 100%; height: 100%;"></div>
-    <script src="{% static 'lofi/circular-audio-wave.min.js' %}"></script>
-    <div class="piano">
+        <div style="margin-top: 2em">
+            <a class="btn btn-lg btn-new" href="{% url 'visualizer' video_id %}">Visualize</a>
+        </div>
+
+        <div class="piano" style="margin-top: 2em;">
             <div data-key="65" class="key btn btn-secondary">
                 <kbd>A</kbd>
-              </div>
-              <div data-key="83" class="key btn btn-secondary">
+            </div>
+            <div data-key="83" class="key btn btn-secondary">
                 <kbd>S</kbd>
-              </div>
-              <div data-key="68" class="key btn btn-secondary">
+            </div>
+            <div data-key="68" class="key btn btn-secondary">
                 <kbd>D</kbd>
-              </div>
-              <div data-key="70" class="key btn btn-secondary">
+            </div>
+            <div data-key="70" class="key btn btn-secondary">
                 <kbd>F</kbd>
-              </div>
-              <div data-key="71" class="key btn btn-secondary">
+            </div>
+            <div data-key="71" class="key btn btn-secondary">
                 <kbd>G</kbd>
-              </div>
-              <div data-key="72" class="key btn btn-secondary">
+            </div>
+            <div data-key="72" class="key btn btn-secondary">
                 <kbd>H</kbd>
-              </div>
-              <div data-key="74" class="key btn btn-secondary">
+            </div>
+            <div data-key="74" class="key btn btn-secondary">
                 <kbd>J</kbd>
-              </div>
-              <div data-key="75" class="key btn btn-secondary">
+            </div>
+            <div data-key="75" class="key btn btn-secondary">
                 <kbd>K</kbd>
-              </div>
-              <div data-key="76" class="key btn btn-secondary">
+            </div>
+            <div data-key="76" class="key btn btn-secondary">
                 <kbd>L</kbd>
-              </div>
+            </div>
         </div>
-        <script src="{% static 'lofi/audio-buttons.js' %}"></script>
+    </div>
+
+    <script src="{% static 'lofi/audio-buttons.js' %}"></script>
         <audio data-key="65" src="{% static 'lofi/sounds/boom.wav' %}"></audio>
         <audio data-key="83" src="{% static 'lofi/sounds/hihat.wav' %}"></audio>
         <audio data-key="68" src="{% static 'lofi/sounds/kick.wav' %}"></audio>
@@ -54,8 +73,4 @@
         <audio data-key="74" src="{% static 'lofi/sounds/tink.wav' %}"></audio>
         <audio data-key="75" src="{% static 'lofi/sounds/tom.wav' %}"></audio>
         <audio data-key="76" src="{% static 'lofi/sounds/clap.wav' %}"></audio>
-    <script>
-        let wave = new CircularAudioWave(document.getElementById('chart-container'));
-        wave.loadAudio('/static/lofi/{{ filename }}');
-    </script>
 {% endblock %}

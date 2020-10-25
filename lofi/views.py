@@ -79,7 +79,9 @@ def playback(request, video_id):
     youtubedl(url)
     filename = "downloads/" + video_id + ".wav"
 
-
     return render(request, 'lofi/playback.html', {"url": url, "video_id": video_id, "filename": filename})
 
 
+def visualizer(request, video_id):
+    filename = "downloads/" + video_id + ".wav"
+    return render(request, 'lofi/visualizer.html', {"filename": filename})
