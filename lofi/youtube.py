@@ -92,7 +92,7 @@ def youtubedl(url):
                 bop = bop + drums
         print(loop_times)
         print(len(bop))
-        bop = bop - 25
+        bop = bop - 15
         # how to get length of drums, then loop that many times
         reverser = bop.overlay(reverser)
         # mono
