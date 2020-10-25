@@ -81,18 +81,15 @@ def youtubedl(url):
         print("low passed")
         # pick random number [1, 14]
         resultNum = random.randint(1, 14)
+        print(resultNum)
         drums = AudioSegment.from_wav('beat'+ str(resultNum) +'.wav')
-        print(len(drums))
-        print(len(beat))
         bop = drums
         loop_times = 1
         if len(beat) > len(drums):
             loop_times = math.ceil(len(beat) / (len(drums)))
             for x in range(0, loop_times):
                 bop = bop + drums
-        print(loop_times)
-        print(len(bop))
-        bop = bop - 25
+        bop = bop - 15
         # how to get length of drums, then loop that many times
         reverser = bop.overlay(reverser)
         # mono

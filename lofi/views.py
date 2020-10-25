@@ -12,14 +12,7 @@ base_url = "https://www.youtube.com/watch?v="
 
 # Create your views here.
 def index(request):
-    context = {'name': 'Tanya Lai'}
-    if request.method == 'POST':
-        data = request.POST
-        context['name'] = data.get('firstname')
-    return render(request, 'lofi/index.html', context)
-
-def make_lofi(request):
-    return 1
+    return render(request, 'lofi/index.html')
 
 def request_lofi(request):
     if request.method == 'POST':
