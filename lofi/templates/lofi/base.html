@@ -10,7 +10,6 @@
     <!-- Favicon -->
     <link rel='shortcut icon' type='image/x-icon' href="{% static 'lofi/favicon.ico' %}" />
 
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -21,14 +20,12 @@
     <!-- Our JS -->
     <!-- <script src="{% static 'lofi/script.js' %}"></script>
  -->
-    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-    <script src="{% static 'lofi/app.js' %}"></script>
-    <title>LoFi</title>
+    
+  <title>LoFi</title>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-md bg-light navbar-light">
+  <body>  
+    <div id="particles-js"></div>
+    <nav class="navbar navbar-expand-md">
       <!-- Brand -->
       <a class="navbar-brand" href="/">LoFeeFiFoFum</a>
 
@@ -39,7 +36,7 @@
 
       <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
+       <!--  <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
@@ -49,15 +46,18 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </nav>
-
-      <!-- particles.js container --> 
-    <div id="particles-js"></div>
-
     {% block content %}
     {% endblock %}
+
+    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
+    <!-- <script src="{% static 'lofi/particles.js-master/particles.js' %}"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.9.2/dist/tsparticles.min.js" integrity="sha256-5kED68Spy7K2CEbfu4CjV92DmZR5ZQFUoIR5qmPzZWg=" crossorigin="anonymous"></script>
+
+    <script src="{% static 'lofi/app.js' %}"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

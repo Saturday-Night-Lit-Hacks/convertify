@@ -9,6 +9,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Trispace&display=swap');
 
+
 /*.midway {
     position: absolute;
     margin: auto;
@@ -32,10 +33,8 @@ body {
 
 	background-color: #74EBD5;
 	background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
-
 	background-repeat: no-repeat;
 	align-items: center;
-
 }
 
 
@@ -60,17 +59,39 @@ h1, h2, h3, p {
 
 .index button:hover {
 	color: white;
-	border: 1px solid #432818;
-	background-color: #432818;
+	border: 1px solid #8584e3;
+	background-color: #8584e3;
 }
 
 .container {
 	/*border: 1px solid black;*/
 	width: 100%;
-	height: 100%;
+	height: 90%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: relative;
+	/*border: 3px solid blue;*/
 }
 
+/* ---- particles.js container ---- */ 
+#particles-js{ 
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
+	/*background: black;*/
+	/*border: 3px solid red;*/
+}
 
+.navbar {
+	padding-top: 10px;
+}
+.navbar a {
+	color: white;
+	font-size: 25px;
+	font-family: 'Trispace', sans-serif;
+}
+.navbar a:hover {
+	opacity: 0.5;
+}
