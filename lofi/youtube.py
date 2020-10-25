@@ -10,6 +10,8 @@ from pydub import AudioSegment
 import subprocess
 from pydub.playback import play
 import math
+from honeycomb.settings import BASE_DIR
+import os
 
 
 def youtube(queries, resultNum, rand):
@@ -56,7 +58,7 @@ def youtubedl(url):
           'key': 'FFmpegExtractAudio',
           'preferredcodec': 'wav',
         }],
-        'ffmpeg_location': 'ffmpeg-f/',
+        'ffmpeg_location': os.path.join(BASE_DIR, 'ffmpeg_stuff'),
         'progress_hooks': [download_hook],
         'download': False,
     }
