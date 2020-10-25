@@ -75,9 +75,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'honeycomb.wsgi.application'
 
 # Youtube API Key
-# KEY = 'AIzaSyAaS8V5V5eqrh9SQoJxKpoxUS2Eh3InnFQ'
-# KEY = 'AIzaSyBohn17MxwzaHl0yeAPgK44_ucY3WCxS70'
-KEY = 'AIzaSyASMIjUu7Vb-mheUBqsBAI4RY59SSlnwGc'
+KEY = 'AIzaSyCJYxLaOBLwb4NH9KxKddzS0dA5cRFgWkg'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
