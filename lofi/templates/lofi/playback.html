@@ -1,8 +1,6 @@
 {% extends 'lofi/base.html' %}
 {% load static %}
 
-{% load static %}
-
 {% block content %}
     {% load crispy_forms_tags %}
     <div class="playback container text-center">      
@@ -19,6 +17,6 @@
     <script src="{% static 'lofi/circular-audio-wave.min.js' %}"></script>
     <script>
         let wave = new CircularAudioWave(document.getElementById('chart-container'));
-        wave.loadAudio('../static/lofi/beat4.wav');
+        wave.loadAudio('/static/lofi/{{ filename }}');
     </script>
 {% endblock %}
