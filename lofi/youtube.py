@@ -75,7 +75,10 @@ def youtubedl(url):
         ydl.download([url])
 
         print('Converting to Lo-Fi')
-        beat = AudioSegment.from_wav(filename)[start:end] + 25
+        beat = AudioSegment.from_wav(filename)[start:end] + 15
+        reverser = beat.low_pass_filter(500)
+        reverser = reverser.high_pass_filter(4500)
+        print("low passed")
         # pick random number [1, 14]
         resultNum = random.randint(1, 14)
         drums = AudioSegment.from_wav('beat'+ str(resultNum) +'.wav')
@@ -89,14 +92,12 @@ def youtubedl(url):
                 bop = bop + drums
         print(loop_times)
         print(len(bop))
+        bop = bop - 25
         # how to get length of drums, then loop that many times
-        reverser = bop.overlay(beat, gain_during_overlay=20)
+        reverser = bop.overlay(reverser)
         # mono
         print("overlayed")
-        # reverser = reverser.high_pass_filter(6500)
         # print("high passed")
-        reverser = reverser.low_pass_filter(1000)
-        print("low passed")
         reverser = reverser.fade_in(3000).fade_out(3000)
         print("faded")
 
