@@ -60,7 +60,7 @@ def youtubedl(url):
 
     ydl_opts = {
         'format': 'm4a/bestaudio',
-        'outtmpl': "%(id)s.%(ext)s",  
+        'outtmpl': "lofi/static/lofi/downloads/%(id)s.%(ext)s",  
         'postprocessors': [{
           'key': 'FFmpegExtractAudio',
           'preferredcodec': 'wav',
@@ -72,14 +72,16 @@ def youtubedl(url):
 
     ydl = youtube_dl.YoutubeDL(ydl_opts)
 
-
     with ydl:
         vid_info = ydl.extract_info(url, download=False)
         # keeping copy of filname
         video_id = vid_info.get('id')
+        filename = "lofi/static/lofi/downloads/" + video_id + ".wav"
         ydl.download([url])
 
         print('Converting to Lo-Fi')
-        beat = AudioSegment.from_wav(video_id + '.wav')
-        filtered = beat.low_pass_filter(3000)
+        beat = AudioSegment.from_wav(filename)
+        filtered = beat.low_pass_filter(1000)
         filtered.export(video_id + '.wav', format='wav')
+        print('Done!')
+
