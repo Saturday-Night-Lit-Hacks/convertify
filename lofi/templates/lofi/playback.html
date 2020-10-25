@@ -1,12 +1,17 @@
 {% extends 'lofi/base.html' %}
+{% load static %}
 
 {% load static %}
 
 {% block content %}
     {% load crispy_forms_tags %}
-    <div class="container">
-        <h3 class="page-title">Enjoy ur moosic</h3>
-        {{ video.url }}
+    <div class="playback container text-center">      
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       	<br><br><br>
+   		<audio controls>
+		  <source src="/static/lofi/{{ filename }}" type="audio/wav">
+		Your browser does not support the audio element.
+		</audio>
     </div>
 
     <button onclick="wave.play()">Play</button>

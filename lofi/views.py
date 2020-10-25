@@ -61,17 +61,25 @@ def request_lofi(request):
                 })
 
             ytVid = YoutubeLink.objects.create(url=video)
+            # return redirect('playback', ytVid.id)
+            request.session['converted'] = False
+            # return redirect('loading', converted)
             return redirect('playback', ytVid.id)
+            # return redirect('loading')
     else:
         form = RequestMusicForm()
-    return render(request, 'lofi/request_lofi.html', {
-        'form': form
-    })
+    return render(request, 'lofi/request_lofi.html', {'form': form})
+
 
 def playback(request, video_id):
+    converted = request.session.get('converted')
     video_object = YoutubeLink.objects.get(pk=video_id)
     url = video_object.url
-
+    video_id = url[32:]
     youtubedl(url)
-        
-    return render(request, 'lofi/playback.html', {"url": url})
+    filename = "downloads/" + video_id + ".wav"
+
+
+    return render(request, 'lofi/playback.html', {"url": url, "video_id": video_id, "filename": filename})
+
+

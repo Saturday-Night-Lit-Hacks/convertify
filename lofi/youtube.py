@@ -51,7 +51,7 @@ def youtubedl(url):
 
     ydl_opts = {
         'format': 'm4a/bestaudio',
-        'outtmpl': "%(id)s.%(ext)s",  
+        'outtmpl': "lofi/static/lofi/downloads/%(id)s.%(ext)s",  
         'postprocessors': [{
           'key': 'FFmpegExtractAudio',
           'preferredcodec': 'wav',
@@ -63,18 +63,19 @@ def youtubedl(url):
 
     ydl = youtube_dl.YoutubeDL(ydl_opts)
 
-
     with ydl:
         vid_info = ydl.extract_info(url, download=False)
         # keeping copy of filname
         video_id = vid_info.get('id')
+        filename = "lofi/static/lofi/downloads/" + video_id + ".wav"
+
         duration = vid_info.get('duration')
         start = (duration * 1000) - (1.5 * 60 * 1000)
         end = duration * 1000
         ydl.download([url])
 
         print('Converting to Lo-Fi')
-        beat = AudioSegment.from_wav(video_id + '.wav')[start:end] + 25
+        beat = AudioSegment.from_wav(filename)[start:end] + 25
         # pick random number [1, 14]
         resultNum = random.randint(1, 14)
         drums = AudioSegment.from_wav('beat'+ str(resultNum) +'.wav')
