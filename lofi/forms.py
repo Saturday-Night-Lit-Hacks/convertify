@@ -5,5 +5,5 @@ class RequestMusicForm(forms.Form):
 
     text = forms.CharField(required=False, max_length=280, label="Input any text (Ex: an essay)",
                            widget=forms.Textarea(attrs={'placeholder': 'Insert your own text'}))
-    freq_num = forms.IntegerField(required=False, label="Frequency of Words")
+    freq_num = forms.IntegerField(required=False, label="Number of Words")
     rand_video = forms.BooleanField(label="Check to select a random video.", required=False)
