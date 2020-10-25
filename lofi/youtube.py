@@ -8,6 +8,7 @@ import os
 import youtube_dl
 from pydub import AudioSegment
 import subprocess
+from pydub.playback import play
 
 
 def youtube(queries, resultNum, rand):
@@ -73,4 +74,12 @@ def youtubedl(url):
 
 
     with ydl:
-       ydl.download([url])
+        vid_info = ydl.extract_info(url, download=False)
+        # keeping copy of filname
+        video_id = vid_info.get('id')
+        ydl.download([url])
+
+        print('Converting to Lo-Fi')
+        beat = AudioSegment.from_wav(video_id + '.wav')
+        filtered = beat.low_pass_filter(3000)
+        filtered.export(video_id + '.wav', format='wav')
