@@ -58,6 +58,7 @@ def youtubedl(url):
           'key': 'FFmpegExtractAudio',
           'preferredcodec': 'wav',
         }],
+        # Source: https://stackoverflow.com/questions/63283510/where-can-discord-bots-find-the-ffmpeg-buildpack-heroku
         # 'ffmpeg_location': os.path.join(BASE_DIR, 'ffmpeg_stuff'),
         'progress_hooks': [download_hook],
         'download': False,
