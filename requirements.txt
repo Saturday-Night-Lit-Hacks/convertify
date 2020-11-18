@@ -42,7 +42,7 @@ threadpoolctl==2.1.0
 tqdm==4.50.2
 uritemplate==3.0.1
 urllib3==1.25.11
-youtube-dl==2020.9.20
+youtube-dl==2020.11.18
 whitenoise==5.2.0
 dj_database_url==0.5.0
 psycopg2-binary==2.8.5
