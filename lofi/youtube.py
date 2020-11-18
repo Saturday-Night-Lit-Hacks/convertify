@@ -53,12 +53,12 @@ def youtubedl(url):
 
     ydl_opts = {
         'format': 'm4a/bestaudio',
-        'outtmpl': "lofi/static/lofi/downloads/%(id)s.%(ext)s",  
+        'outtmpl': "lofi/static/lofi/downloads/%(id)s.%(ext)s",
         'postprocessors': [{
           'key': 'FFmpegExtractAudio',
           'preferredcodec': 'wav',
         }],
-        'ffmpeg_location': os.path.join(BASE_DIR, 'ffmpeg_stuff'),
+        # 'ffmpeg_location': os.path.join(BASE_DIR, 'ffmpeg_stuff'),
         'progress_hooks': [download_hook],
         'download': False,
     }
